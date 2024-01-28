@@ -42,17 +42,16 @@ public class ClientTests
     public void Client_Discount_ShouldNotHaveRequiredAttribute()
     {
         var propertyInfo = typeof(Client).GetProperty("Discount");
+        Assert.NotNull(propertyInfo, "Property 'Discount' not found in Client class.");
         var requiredAttribute = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false);
-
-        Assert.AreEqual(0, requiredAttribute.Length);
+        Assert.That(requiredAttribute.Length, Is.EqualTo(0));
     }
 
     [Test]
     public void Client_LastLoginDate_ShouldHaveDateTimeType()
     {
         var propertyInfo = typeof(Client).GetProperty("LastLoginDate");
-
-        Assert.AreEqual(typeof(DateTime), propertyInfo.PropertyType);
+        Assert.That(propertyInfo.PropertyType, Is.EqualTo(typeof(DateTime)));
     }
 
     [Test]
