@@ -51,6 +51,7 @@ public class ClientTests
     public void Client_LastLoginDate_ShouldHaveDateTimeType()
     {
         var propertyInfo = typeof(Client).GetProperty("LastLoginDate");
+        Assert.NotNull(propertyInfo, "Property 'LastLoginDate' not found in Client class.");
         Assert.That(propertyInfo.PropertyType, Is.EqualTo(typeof(DateTime)));
     }
 
