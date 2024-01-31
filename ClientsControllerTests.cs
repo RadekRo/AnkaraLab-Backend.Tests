@@ -61,7 +61,7 @@ namespace AnkaraLab_Backend.Tests
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
             Assert.IsNotNull((result.Result as OkObjectResult)?.Value);
 
-            mockRepository.Verify(repo => repo.GetClientAsync(1), Times.Once, "OK");
+            mockRepository.Verify(repo => repo.GetClientAsync(1), Times.Once);
         }
 
     }
