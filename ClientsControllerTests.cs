@@ -65,6 +65,24 @@ namespace AnkaraLab_Backend.Tests
             mockRepository.Verify(repo => repo.GetClientAsync(1), Times.Once);
         
         }
+        [Test]
+        public async Task DeleteClient_ReturnsOkResultForValidId()
+        {
+            var mockRepository = new Mock<IClientRepository>();
+            var mockMapper = new Mock<IMapper>();
+            var mockLogger = new Mock<ILogger<ClientsController>>();
 
+            mockRepository.Setup(repo => repo.DeleteClientAsync(It.IsAny<int>()))
+                            .ReturnsAsync(true);
+
+            var controller = new ClientsController(mockRepository.Object, mockMapper.Object, mockLogger.Object);
+
+            var result = await controller.DeleteClient(1);
+
+            Assert.IsInstanceOf<OkObjectResult>(result); 
+            Assert.IsNotNull((result as OkObjectResult)?.Value);
+
+            mockRepository.Verify(repo => repo.DeleteClientAsync(1), Times.Once);
+        }
     }
 }
