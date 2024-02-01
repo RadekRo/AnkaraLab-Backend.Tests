@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using AnkaraLab_BackEnd.WebAPI.Domain;
+using AnkaraLab_BackEnd.WebAPI.DTOs;
 
 
 namespace AnkaraLab_Backend.Tests
@@ -62,6 +63,7 @@ namespace AnkaraLab_Backend.Tests
             Assert.IsNotNull((result.Result as OkObjectResult)?.Value);
 
             mockRepository.Verify(repo => repo.GetClientAsync(1), Times.Once);
+        
         }
 
     }
